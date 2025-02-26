@@ -1,5 +1,5 @@
 import React from "react";
-import { LogOut, MapPin } from "lucide-react";
+import { LockKeyhole, LogOut, MapPin } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -10,12 +10,14 @@ import { Button } from "@/components/ui/button";
 import { signOut } from "firebase/auth";
 import { auth, db } from "@/Firebase/firebase.util";
 import { doc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 interface SideNavProps {
   setActivePage: (page: string) => void;
 }
 
 export default function SideNav({ setActivePage }: SideNavProps) {
+  const Navigate = useNavigate();
   const [activeUser, setActiveUser] = React.useState<any>("");
   const [userInfo, setUserInfo] = React.useState<any>("");
   React.useEffect(() => {
@@ -51,12 +53,17 @@ export default function SideNav({ setActivePage }: SideNavProps) {
         <img
           src="src/assets/testi_1.png"
           alt="avatar"
-          className="rounded-full w-20 h-20"
+          className="border-3 border-gray-300 w-24 h-24 rounded-full hover:scale-110 duration-300"
         />
-        <div className="text-gray-600 flex items-center font-bold mt-2 space-x-4 justify-evenly">
+        <div className="text-gray-600 flex items-center font-bold mt-2 space-x-2 justify-evenly">
           <div className="hover:underline">
-            {`${userInfo?.firstName?.[0]}.${userInfo?.lastName}` || ""}
+            {userInfo ? (`${userInfo?.firstName?.[0]}.${userInfo?.lastName}`): "Ghost"}
           </div>
+          <span
+            className="flex items-center gap-2 hover:underline"
+          >
+            <LockKeyhole className="hover:underline" onClick={() =>Navigate("/lock")}/>
+          </span>
           <span
             className="flex items-center gap-2 hover:underline"
             onClick={() => signOut(auth)}

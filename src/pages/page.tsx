@@ -33,6 +33,7 @@ import Support from "./Support";
 import DashBoard2 from "./DashBoard2";
 import Listing from "./listing";
 import NewListing from "./newlisting";
+import Lock from "./lock";
 import {
   Sheet,
   SheetContent,
@@ -44,6 +45,7 @@ import {
 import { auth, db } from "@/Firebase/firebase.util";
 import { doc, getDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
+import Profile from "./profile";
 
 export default function Page() {
   const [activePage, setActivePage] = React.useState("");
@@ -57,20 +59,31 @@ export default function Page() {
     switch (activePage) {
       case "dashboard":
         return <DashBoard />;
+        break;
       case "email":
         return <Email />;
+        break;
       case "accounts":
         return <Accounts />;
+        break;
       case "support":
         return <Support />;
+        break;
       case "dashboard2":
-        return <DashBoard2  setActivePage={setActivePage}/>;
+        return <DashBoard2 setActivePage={setActivePage} />;
+        break;
       case "listing":
         return <Listing />;
+        break;
       case "newlisting":
         return <NewListing />;
+        break;
+      case "profile":
+        return <Profile />;
+        break;
       default:
         return <DashBoard />;
+        break;
     }
   }
   React.useEffect(() => {
@@ -120,16 +133,23 @@ export default function Page() {
             <div className="">
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex hover:bg-gray-300 rounded-sm p-1.5 duration-100 gap-2">
-                  {`${userInfo.firstName} ${userInfo.lastName} `}{" "}
+                  {userInfo
+                    ? `${userInfo?.firstName} ${userInfo?.lastName}`
+                    : "Ghost"}
                   <ChevronDown />
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent className="w-40">
                   <DropdownMenuLabel className="text-center bg-[#f1f5f9]">
-                    {`${userInfo.firstName} ${userInfo.lastName} `}
+                    {userInfo
+                      ? `${userInfo?.firstName} ${userInfo?.lastName}`
+                      : "Ghost"}
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="flex justify-between">
+                  <DropdownMenuItem
+                    className="flex justify-between"
+                    onClick={() => setActivePage("profile")}
+                  >
                     Profile
                     <User color="gray" />
                   </DropdownMenuItem>
@@ -147,7 +167,10 @@ export default function Page() {
                     <Wrench color="gray" />
                   </DropdownMenuItem>
                   <Separator />
-                  <DropdownMenuItem className="flex justify-between" onClick={()=>signOut(auth)}>
+                  <DropdownMenuItem
+                    className="flex justify-between"
+                    onClick={() => signOut(auth)}
+                  >
                     Log out
                     <LogOut color="gray" />
                   </DropdownMenuItem>

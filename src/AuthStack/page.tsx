@@ -5,6 +5,7 @@ import React from "react";
 import { auth } from "@/Firebase/firebase.util";
 import Page from "@/pages/page";
 import { useNavigate } from "react-router-dom";
+import Lock from "@/pages/lock";
 
 export default function LoginPage() {
   const Navigate = useNavigate()
@@ -25,6 +26,7 @@ export default function LoginPage() {
       {activeUser.trim() !== "" ? (
         <Routes>
           <Route path="/" element={<Page />} />
+          <Route path="/lock" element={<Lock />} />
         </Routes>
       ) : (
         <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">

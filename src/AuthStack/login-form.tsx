@@ -19,7 +19,6 @@ export function LoginForm() {
       ...formFields,
       [e.target.name]: e.target.value,
     });
-    console.log(formFields);
   };
   const [error, setError] = React.useState("");
   const navigate = useNavigate();
