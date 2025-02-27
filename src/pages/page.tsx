@@ -3,16 +3,26 @@ import "../styles.css";
 import {
   Check,
   ChevronDown,
+  ChevronUp,
+  CirclePlus,
+  CircleX,
+  Clock4,
+  File,
   Flag,
   LogOut,
   Logs,
   MailOpen,
   Menu,
+  Pencil,
   Plus,
+  RefreshCcw,
+  RefreshCw,
   Search,
   StickyNote,
   TriangleAlert,
   User,
+  Users,
+  Wallet,
   Wrench,
   X,
 } from "lucide-react";
@@ -46,6 +56,14 @@ import { auth, db } from "@/Firebase/firebase.util";
 import { doc, getDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import Profile from "./profile";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export default function Page() {
   const [activePage, setActivePage] = React.useState("");
@@ -244,15 +262,224 @@ export default function Page() {
                   <SheetTrigger>
                     <Logs />
                   </SheetTrigger>
-                  <SheetContent>
-                    <SheetHeader>
-                      <SheetTitle>Are you absolutely sure?</SheetTitle>
-                      <SheetDescription>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
-                      </SheetDescription>
+                  <SheetContent className="overflow-y-auto">
+                    <SheetHeader className="">
+                      <div className="flex justify-start items-center gap-2 py-2">
+                        <img
+                          src="src/assets/testi_1.png"
+                          alt="#"
+                          onClick={() => setActivePage("profile")}
+                          className="w-10 h-10 rounded-full hover:scale-110 duration-300"
+                        />
+                        <p
+                          className="font-medium hover:underline"
+                          onClick={() => setActivePage("profile")}
+                        >
+                          {userInfo
+                            ? `${userInfo?.firstName} ${userInfo?.lastName}`
+                            : "Ghost"}
+                        </p>
+                      </div>
                     </SheetHeader>
+                    <div className="flex flex-col gap-6 mt-5">
+                      <div className="flex border rounded-lg items-center">
+                        <Input
+                          className="border-0 w-100 focus:border-4 focus:border-blue-300 outline-none"
+                          placeholder="Search..."
+                        />
+                        <Search
+                          className="bg-gray-600 h-10 rounded-br-lg rounded-r-lg font-semibold p-3"
+                          size="48"
+                          color="white"
+                        />
+                      </div>
+                      <div className="flex justify-between items-center bg-[#f1f5f9] p-2 rounded-lg">
+                        <div className="px-3">
+                          <span className="text-gray-600 font-medium">
+                            CLIENTS
+                          </span>
+                          <p>$460</p>
+                        </div>
+                        <div>
+                          <span className="text-gray-600 font-medium">
+                            SALES
+                          </span>
+                          <p>$728</p>
+                        </div>
+                        <div>
+                          <span className="text-gray-600 font-medium">
+                            EARNING
+                          </span>
+                          <p>$7,860</p>
+                        </div>
+                      </div>
+                      <div className="mt-6">
+                        <div className="flex justify-between items-center bg-[#f1f5f9] p-2 rounded-lg">
+                          <span className="flex gap-2 text-gray-600 font-semibold">
+                            <Users />
+                            Friends
+                          </span>
+                          <span className="flex gap-2 text-gray-600">
+                            <RefreshCcw />
+                            <ChevronUp />
+                          </span>
+                        </div>
+                        <Friend
+                          name="Sara Fields"
+                          role="Photographer"
+                          src="src/assets/barbara.jpg"
+                        />
+                        <Friend
+                          name="Carl Wells"
+                          role="Web Designer"
+                          src="src/assets/adam.png"
+                        />
+                        <Friend
+                          name="Lori Grant"
+                          role="UI Designer"
+                          src="src/assets/paul.png"
+                        />
+                        <Friend
+                          name="Thomas Rilley"
+                          role="Copywriter"
+                          src="src/assets/testi_1.png"
+                        />
+                      </div>
+                      <div className="mt-6">
+                        <div className="flex justify-between items-center bg-[#f1f5f9] p-2 rounded-lg mb-4">
+                          <span className="flex gap-2 text-gray-600 font-semibold">
+                            <Clock4 />
+                            Activity
+                          </span>
+                          <span className="flex gap-2 text-gray-600">
+                            <RefreshCcw />
+                            <ChevronUp />
+                          </span>
+                        </div>
+                        <Activity
+                          title="+$29 New sale"
+                          description="Photographer"
+                          icon={<Wallet color="gray" />}
+                          time="5 min ago"
+                        />
+                        <Activity
+                          title="Project removed"
+                          description="Best Icon Set"
+                          icon={<CircleX color="red" />}
+                          time="26 min ago"
+                        />
+                        <Activity
+                          title="You edited the file"
+                          description="Docs.doc"
+                          icon={<Pencil color="blue" />}
+                          time="3 hours ago"
+                        />
+                        <Activity
+                          title="New user"
+                          description="StudioWeb - View Profile"
+                          icon={<CirclePlus color="gray" />}
+                          time="5 hours ago"
+                        />
+                        <Activity
+                          title="App v5.5 is available"
+                          description="Update now"
+                          icon={<Wrench color="orange" />}
+                          time="8 hours ago"
+                        />
+                        <Activity
+                          title="+1 Friend Request"
+                          description="Accept"
+                          icon={<User color="orange" />}
+                          time="1 day ago"
+                        />
+                      </div>
+                      <Accordion type="single" collapsible className="mt-6">
+                        <AccordionItem value="item-1">
+                          <AccordionTrigger className="w-full flex justify-between items-center bg-[#f1f5f9] p-2 rounded-lg py-4 mb-1">
+                            <div className="flex justify-between items-center">
+                              <span className="flex gap-2 text-gray-600 font-semibold">
+                                <Pencil color="gray" />
+                                Profile
+                              </span>
+                            </div>
+                          </AccordionTrigger>
+
+                          <AccordionContent className="mt-4 flex flex-col gap-4">
+                            <form className="flex flex-col gap-6">
+                              <label htmlFor="">
+                                Name
+                                <Input type="text" placeholder="John Smith" />
+                              </label>
+                              <label htmlFor="">
+                                Email Address
+                                <Input
+                                  type="email"
+                                  placeholder="example@gmail.com"
+                                />
+                              </label>
+                              <label htmlFor="">
+                                New Password
+                                <Input
+                                  type="password"
+                                  placeholder="New Password..."
+                                />
+                              </label>
+                              <label htmlFor="">
+                              Confirm New Password
+                                <Input
+                                  type="password"
+                                  placeholder="Confirm New Password..."
+                                />
+                              </label>
+                              <Button variant="myStyle" className="w-50">
+                                <RefreshCw/>
+                                Update
+                              </Button>
+                            </form>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                      <Accordion type="single" collapsible className="">
+                        <AccordionItem value="item-1">
+                          <AccordionTrigger className="w-full flex justify-between items-center bg-[#f1f5f9] p-2 rounded-lg py-4 mb-1">
+                            <div className="flex justify-between items-center">
+                              <span className="flex gap-2 text-gray-600 font-semibold">
+                                <Wrench color="gray" />
+                                Settings
+                              </span>
+                            </div>
+                          </AccordionTrigger>
+
+                          <AccordionContent className="mt-4 flex flex-col gap-4">
+                            <Checkbox
+                              title="Online Status"
+                              description="Show your status to all"
+                            />
+                            <Checkbox
+                              title="Verify on Login"
+                              description="Most secure option"
+                            />
+                            <Checkbox
+                              title="Auto Updates"
+                              description="Keep app updated"
+                            />
+
+                            <Checkbox
+                              title="Notifications"
+                              description="For every transaction"
+                            />
+                            <Checkbox
+                              title="API Access"
+                              description="Enable access from third party apps"
+                            />
+                            <Checkbox
+                              title="Two Factor Auth"
+                              description="Using an authenticator"
+                            />
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    </div>
                   </SheetContent>
                 </Sheet>
               </div>
@@ -264,3 +491,41 @@ export default function Page() {
     </div>
   );
 }
+const Friend = ({ name, role, src }: any) => {
+  return (
+    <div className="flex gap-3 items-center px-2 hover:bg-[#f1f5f9] bg-white shadow-sm relative">
+      <div>
+        <img src={src} alt="#" className="rounded-full h-15 w-15" />
+      </div>
+      <div className="flex flex-col gap-2 p-4 items-center">
+        <p className="font-bold text-blue-600 hover:text-black">{name}</p>
+        <p className="text-gray-600">{role}</p>
+      </div>
+    </div>
+  );
+};
+const Activity = ({ icon, title, description, time }: any) => {
+  return (
+    <div className="flex gap-3 items-center px-4 hover:bg-[#f1f5f9] bg-white shadow-sm relative">
+      <div>{icon}</div>
+      <div className="flex flex-col p-4">
+        <p className="font-bold text-black">{title}</p>
+        <p className=" text-blue-600 hover:text-black font-medium">
+          {description}
+        </p>
+        <p className="text-gray-600 text-sm">{time}</p>
+      </div>
+    </div>
+  );
+};
+const Checkbox = ({ title, description }: any) => {
+  return (
+    <div className="flex gap-2">
+      <input type="checkbox" className="mb-6" id="" />
+      <div className="flex flex-col font-semibold">
+        {title}
+        <p className="text-gray-500">{description}</p>
+      </div>
+    </div>
+  );
+};

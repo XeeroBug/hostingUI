@@ -54,7 +54,7 @@ export default function Profile() {
         {userInfo ? (`${userInfo?.firstName} ${userInfo?.lastName}`): "Ghost"}
         </h1>
         <p className="text-white font-semibold">
-        {userInfo ? (`Id: ${userInfo?.email}`): "Ghost"}
+        {userInfo ? (`Id: ${userInfo?.userId}`): "xxxxx"}
 
         </p>
         <div className="flex gap-3">

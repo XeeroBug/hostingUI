@@ -56,7 +56,7 @@ export default function SideNav({ setActivePage }: SideNavProps) {
           className="border-3 border-gray-300 w-24 h-24 rounded-full hover:scale-110 duration-300"
         />
         <div className="text-gray-600 flex items-center font-bold mt-2 space-x-2 justify-evenly">
-          <div className="hover:underline">
+          <div className="hover:underline" onClick={() => setActivePage("profile")}>
             {userInfo ? (`${userInfo?.firstName?.[0]}.${userInfo?.lastName}`): "Ghost"}
           </div>
           <span

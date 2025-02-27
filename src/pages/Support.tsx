@@ -37,7 +37,7 @@ export default function Support() {
             placeholder="Search Knowledge Base"
           />
           <Search
-            className="bg-blue-300 h-10 rounded-br-lg rounded-r-lg font-semibold p-2"
+            className="bg-blue-300 h-10 rounded-br-lg rounded-r-lg font-semibold p-3"
             size="48"
             color="white"
           />
