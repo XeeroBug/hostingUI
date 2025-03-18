@@ -141,16 +141,6 @@ export default function Email() {
         <Emails title="skyvibe.com" address="hostmaster@skyvibe.io" />
         <Emails title="skyvibe.com" address="admin@skyvibe.io" />
       </div>
-      <footer className="flex justify-between bottom-0">
-        <p>
-          <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
-          &copy;2025
-        </p>
-        <p className="flex gap-1 text-xl">
-          Crafted with <Heart color="red" /> by{" "}
-          <p className="font-semibold text-blue-900">Bin-Abdoul</p>
-        </p>
-      </footer>
     </div>
   );
 }

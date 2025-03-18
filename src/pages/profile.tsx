@@ -54,7 +54,7 @@ export default function Profile() {
         {userInfo ? (`${userInfo?.firstName} ${userInfo?.lastName}`): "Ghost"}
         </h1>
         <p className="text-white font-semibold">
-        {userInfo ? (`Id: ${userInfo?.userId}`): "xxxxx"}
+        {userInfo ? (`Id: ${userInfo?.email}`): "xxxxx"}
 
         </p>
         <div className="flex gap-3">
@@ -163,16 +163,6 @@ export default function Profile() {
           time="2 months"
         />
       </div>
-      <footer className="flex justify-between bottom-0 mt-8">
-        <p>
-          <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
-          &copy;2025
-        </p>
-        <p className="flex gap-1 text-xl">
-          Crafted with <Heart color="red" /> by{" "}
-          <p className="font-semibold text-blue-900">Bin-Abdoul</p>
-        </p>
-      </footer>
     </div>
   );
 }

@@ -64,16 +64,6 @@ function DashBoard2({ setActivePage }: DashboardProps) {
           setActivePage={setActivePage}
         />
       </div>
-      <footer className="flex justify-between bottom-0">
-        <p>
-          <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
-          ©2025
-        </p>
-        <p className="flex gap-1 text-xl">
-          Crafted with <Heart color="red" /> by{" "}
-          <p className="font-semibold text-blue-900">Bin-Abdoul</p>
-        </p>
-      </footer>
     </div>
   );
 }
@@ -115,11 +105,11 @@ const Apartment = ({
         <Button
           variant="myStyle"
           className="w-[70%]"
-          onClick={() => setActivePage("listing")}
+          onClick={() => setActivePage("Listing")}
         >
           More Info
         </Button>
-        <Button variant="outline" onClick={() => setActivePage("newlisting")}>
+        <Button variant="outline" onClick={() => setActivePage("New Listing")}>
           <Pencil />
         </Button>
       </div>

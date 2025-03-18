@@ -185,16 +185,6 @@ export default function Support() {
         <p className="text-gray-400 text-xl">Contact our support team today.</p>
         <Button variant="myStyle" className="w-50 mt-3 p-8"><Send/>Customer Support</Button>
       </div>
-      <footer className="flex justify-between bottom-0">
-        <p>
-          <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
-          &copy;2025
-        </p>
-        <p className="flex gap-1 text-xl">
-          Crafted with <Heart color="red" /> by{" "}
-          <p className="font-semibold text-blue-900">Bin-Abdoul</p>
-        </p>
-      </footer>
     </div>
   );
 }

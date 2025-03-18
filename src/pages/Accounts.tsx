@@ -147,17 +147,6 @@ export default function Accounts() {
           </Button>
         </div>
       </div>
-
-      <footer className="flex justify-between bottom-0">
-        <p>
-          <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
-          &copy;2025
-        </p>
-        <p className="flex gap-1 text-xl">
-          Crafted with <Heart color="red" /> by{" "}
-          <p className="font-semibold text-blue-900">Bin-Abdoul</p>
-        </p>
-      </footer>
     </div>
   );
 }

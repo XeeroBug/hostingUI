@@ -7,8 +7,8 @@ import {
   CirclePlus,
   CircleX,
   Clock4,
-  File,
   Flag,
+  Heart,
   LogOut,
   Logs,
   MailOpen,
@@ -43,13 +43,10 @@ import Support from "./Support";
 import DashBoard2 from "./DashBoard2";
 import Listing from "./listing";
 import NewListing from "./newlisting";
-import Lock from "./lock";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { auth, db } from "@/Firebase/firebase.util";
@@ -64,6 +61,9 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import DashBoard3 from "./DashBoard3";
+import Orders from "./Orders";
+import Order from "./Order";
 
 export default function Page() {
   const [activePage, setActivePage] = React.useState("");
@@ -75,30 +75,39 @@ export default function Page() {
   };
   function renderPage() {
     switch (activePage) {
-      case "dashboard":
+      case "Dashboard":
         return <DashBoard />;
         break;
-      case "email":
+      case "Email":
         return <Email />;
         break;
-      case "accounts":
+      case "Accounts":
         return <Accounts />;
         break;
-      case "support":
+      case "Support":
         return <Support />;
         break;
-      case "dashboard2":
+      case "Dashboard2":
         return <DashBoard2 setActivePage={setActivePage} />;
         break;
-      case "listing":
+      case "Listing":
         return <Listing />;
         break;
-      case "newlisting":
+      case "New Listing":
         return <NewListing />;
         break;
       case "profile":
         return <Profile />;
         break;
+      case "Dashboard3":
+        return <DashBoard3 />;
+        break;
+      case "Orders":
+        return <Orders />;
+        break;
+        case "Order":
+          return <Order />;
+          break;
       default:
         return <DashBoard />;
         break;
@@ -425,14 +434,14 @@ export default function Page() {
                                 />
                               </label>
                               <label htmlFor="">
-                              Confirm New Password
+                                Confirm New Password
                                 <Input
                                   type="password"
                                   placeholder="Confirm New Password..."
                                 />
                               </label>
                               <Button variant="myStyle" className="w-50">
-                                <RefreshCw/>
+                                <RefreshCw />
                                 Update
                               </Button>
                             </form>
@@ -487,6 +496,16 @@ export default function Page() {
           </div>
         </div>
         {renderPage()}
+        <footer className="flex justify-between bottom-0">
+          <p>
+            <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
+            ©2025
+          </p>
+          <p className="flex gap-1 text-xl">
+            Crafted with <Heart color="red" /> by{" "}
+            <span className="font-semibold text-blue-900">Bin-Abdoul</span>
+          </p>
+        </footer>
       </div>
     </div>
   );

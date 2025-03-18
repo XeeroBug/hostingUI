@@ -45,7 +45,7 @@ export default function DashBoard() {
           <Cards
             title="$49 pending"
             value="Pending"
-            icon={<CreditCard size={64} color="green" />}
+            icon={<CreditCard size={64} color="gray" />}
           />
         </div>
       </div>
@@ -116,16 +116,6 @@ export default function DashBoard() {
           color="red"
         />
       </div>
-      <footer className="flex justify-between bottom-0">
-        <p>
-          <span className="font-semibold text-blue-900 text-xl">skyVibe</span>{" "}
-          &copy;2025
-        </p>
-        <p className="flex gap-1 text-xl">
-          Crafted with <Heart color="red" /> by{" "}
-          <p className="font-semibold text-blue-900">Bin-Abdoul</p>
-        </p>
-      </footer>
     </div>
   );
 }
