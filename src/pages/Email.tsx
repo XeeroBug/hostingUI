@@ -14,11 +14,41 @@ import {
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { resetUser, setUser } from "@/redux/userSlice";
+
 export default function Email() {
+  const user = useSelector((state: RootState) => state.persistedReducer);
+  console.log(user);
+  const dispatch = useDispatch();
   return (
     <div className="bg-[#f1f5f9] py-6 min-h-screen flex flex-col gap-16">
       <div className="bg-white flex flex-col gap-2 font-semibold items-center justify-center h-40 rounded-2xl">
         <h1 className="text-4xl ">Email Management</h1>
+        <Button
+          onClick={() => {
+            dispatch(
+              setUser({
+                email: "abdoulbin38@gmail.com",
+                firsName: "hamza",
+                lastName: "abdoulbin",
+                uid: "123456789",
+                photoURL:
+                  "https://avatars.githubusercontent.com/u/123456789?v=4",
+              })
+            );
+          }}
+        >
+          click me
+        </Button>
+        <Button
+          onClick={() => {
+            dispatch(resetUser());
+          }}
+        >
+          reset user
+        </Button>
         <span className="text-gray-400 text-lg">
           You currently have 6 active mailboxes and 3 forwarding email
           addresses!
